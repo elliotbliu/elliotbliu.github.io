@@ -1,28 +1,22 @@
-import * as React from "react"
-// import { Link } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import App from '../components/App';
+import { headData } from '../mock/data';
+import 'bootstrap/dist/css/bootstrap.min.css';
+import '../style/main.scss';
 
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+export default () => {
+  const { title, lang, description } = headData;
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Welcome!</h1>
-    <p>Hi, my name is Elliot, I build things for the web. I'm a software engineer based in Beaumont, TX specializing in building (and occasionally designing) exceptional websites, applications, and everything in between.</p>
-    <StaticImage
-      src="../images/cathal.jpg"
-      width={300}
-      quality={95}
-      formats={["AUTO", "WEBP", "AVIF"]}
-      alt="A Gatsby astronaut"
-      style={{ marginBottom: `1.45rem` }}
-    />
-    {/* <p>
-      <Link to="/page-2/">Go to page 2</Link> <br />
-      <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-    </p> */}
-  </Layout>
-)
-
-export default IndexPage
+  return (
+    <>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>{title || 'Gatsby Simplefolio'}</title>
+        <html lang={lang || 'en'} />
+        <meta name="description" content={description || 'Gatsby Simplefolio'} />
+      </Helmet>
+      <App />
+    </>
+  );
+};
